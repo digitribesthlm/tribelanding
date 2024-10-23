@@ -5,7 +5,7 @@ import { ArrowRight, Globe2, Search, Target, BarChart2, Users, Lightbulb } from 
 
 const HeroSection = () => {
   const brandName = process.env.NEXT_PUBLIC_BRAND_NAME || 'Brand';
-  const imageName = process.env.NEXT_PUBLIC_IMAGE_NAME || '/placeholder.jpg';
+  const imageName = process.env.NEXT_PUBLIC_IMAGE_NAME || '/placeholders.jpg';
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@example.com';
 
   const digitalServices = [
