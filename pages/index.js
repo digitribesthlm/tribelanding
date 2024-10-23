@@ -12,7 +12,7 @@ const HeroSection = () => {
     {
       name: "Performance Marketing",
       icon: <Target className="w-8 h-8 text-blue-500" />,
-      description: "Strategic PPC campaigns across Google, Meta, LinkedIn, and more. Drive targeted traffic that converts."
+      description: "Strategic PPC campaigns across Google, Meta, LinkedIn, and more. Drive targeted traffic that converts.."
     },
     {
       name: "Search Engine Optimization",
