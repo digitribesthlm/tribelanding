@@ -56,13 +56,16 @@ const HeroSection = () => {
     });
   };
 
+  const pageTitle = process.env.NEXT_PUBLIC_TITLE || 'Default Title';
+  const pageDescription = process.env.NEXT_PUBLIC_DESC || 'Default Description';
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Head>
-        <title>{brandName} - Your Digital Growth Partner Across Europe</title>
+        <title>{pageTitle}</title>
         <meta 
           name="description" 
-          content="Full-service digital growth agency driving results for B2B and B2C companies across 10 European markets through performance marketing, SEO, and customer journey optimization."
+          content={pageDescription}
         />
       </Head>
       <nav className="border-b fixed w-full bg-white z-50">
