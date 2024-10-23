@@ -163,7 +163,7 @@ const HeroSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-600 mb-4">1. Audit</div>
-                <p className="text-gray-600">Comprehensive analysis of your current SEO performance</p>
+                <p className="text-gray-600">Comprehensive analysis of your current SEO performance.</p>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-600 mb-4">2. Strategy</div>
