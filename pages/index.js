@@ -114,7 +114,7 @@ const HeroSection = () => {
           <div className="py-16 border-t border-gray-100">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-600">500+</div>
+                <div className="text-4xl font-bold text-blue-600">100+</div>
                 <div className="text-gray-600 mt-2">Websites Optimized</div>
               </div>
               <div className="text-center">
