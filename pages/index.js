@@ -1,5 +1,6 @@
 // src/app/page.js
 import React from 'react';
+import Head from 'next/head';
 import { ArrowRight, Globe2, Search, Target, BarChart2, Users, Lightbulb } from 'lucide-react';
 
 const HeroSection = () => {
@@ -57,6 +58,13 @@ const HeroSection = () => {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
+      <Head>
+        <title>{brandName} - Your Digital Growth Partner Across Europe</title>
+        <meta 
+          name="description" 
+          content="Full-service digital growth agency driving results for B2B and B2C companies across 10 European markets through performance marketing, SEO, and customer journey optimization."
+        />
+      </Head>
       <nav className="border-b fixed w-full bg-white z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
