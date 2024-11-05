@@ -11,7 +11,7 @@ const CookiePolicy = () => {
         <div className="prose prose-lg">
           
           <section className="mt-8">
-            <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
+            <h2 className="text-2xl font-semibold mb-4">1. Introduction 22</h2>
             <p>
               {brandName} uses cookies on our website. By using the Service, you consent to the use of cookies.
             </p>
