@@ -1,3 +1,4 @@
+// components/ContactForm.js
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Loader2 } from 'lucide-react';
 
@@ -58,36 +59,24 @@ const ContactForm = ({ isOpen, onClose }) => {
     setErrorDetails('');
 
     try {
-      const webhookUrl = process.env.NEXT_PUBLIC_WEBHOOK_URL;
-      
-      if (!webhookUrl) {
-        throw new Error('Webhook URL is not configured');
-      }
-
-      const payload = {
-        records: [
-          {
-            fields: {
-              Name: e.target.name.value,
-              Email: e.target.email.value,
-              Message: e.target.message.value,
-              "Submission Date": new Date().toISOString()
-            }
-          }
-        ]
-      };
-
-      const response = await fetch(webhookUrl, {
+      const response = await fetch('/api/submit-form', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+          name: e.target.name.value,
+          email: e.target.email.value,
+          message: e.target.message.value
+        })
       });
 
-      // With no-cors mode, we won't get a meaningful response
-      // So we assume success if no error was thrown
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to submit form');
+      }
+
       setSubmitStatus('success');
       e.target.reset();
       if (typeof window !== 'undefined') {
@@ -100,7 +89,7 @@ const ContactForm = ({ isOpen, onClose }) => {
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
-      setErrorDetails('Failed to submit form. Please try again.');
+      setErrorDetails(error.message || 'Failed to submit form. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
