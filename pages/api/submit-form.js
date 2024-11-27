@@ -1,4 +1,9 @@
 export default async function handler(req, res) {
+  // Extensive logging
+  console.log('Received request method:', req.method);
+  console.log('Request headers:', req.headers);
+  console.log('Request body:', JSON.stringify(req.body, null, 2));
+
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -15,48 +20,52 @@ export default async function handler(req, res) {
   }
 
   if (req.method !== 'POST') {
+    console.error('Method not allowed:', req.method);
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
   try {
-    console.log('Request body:', req.body); 
-    const { name, email, message } = req.body;
     const webhookUrl = process.env.NEXT_PUBLIC_WEBHOOK_URL;
+    console.log('Webhook URL:', webhookUrl);
 
     if (!webhookUrl) {
-      throw new Error('Missing webhook URL');
+      throw new Error('Webhook URL is not configured');
     }
 
     const payload = {
       data: {
-        Name: name,
-        Email: email,
-        Message: message,
+        Name: req.body.name || "Default Name",
+        Email: req.body.email || "default@example.com",
+        Message: req.body.message || "Default message",
         "Submission Date": new Date().toISOString()
       }
     };
 
-    console.log('Payload:', payload); 
+    console.log('Prepared payload:', JSON.stringify(payload, null, 2));
 
     const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload)
     });
 
+    console.log('Webhook response status:', response.status);
+
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Webhook error:', errorText);
-      console.error('Webhook response status:', response.status);
-      console.error('Webhook response headers:', response.headers);
+      console.error('Error response:', errorText);
       throw new Error(`HTTP error! status: ${response.status}, details: ${errorText}`);
     }
 
-    res.status(200).json({ success: true });
+    res.status(200).json({ success: true, message: 'Webhook triggered successfully' });
   } catch (error) {
-    console.error('Server error:', error);
-    res.status(500).json({ success: false, message: error.message });
+    console.error('Full webhook error:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error triggering webhook',
+      error: error.message 
+    });
   }
 }
