@@ -5,7 +5,6 @@ import { ArrowRight, Globe2, Search, Target, BarChart2, Users, Lightbulb } from 
 
 const HeroSection = () => {
   const brandName = process.env.NEXT_PUBLIC_BRAND_NAME || 'Brand';
-  const imageName = process.env.NEXT_PUBLIC_IMAGE_NAME || '/placeholders.jpg';
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@example.com';
 
   const digitalServices = [
@@ -91,14 +90,11 @@ const HeroSection = () => {
           {/* Hero Section */}
           <div className="flex flex-col lg:flex-row items-center gap-12 py-16">
             <div className="w-full lg:w-1/2">
-              <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-blue-100 to-teal-50">
+              <div className="relative aspect-square rounded-3xl overflow-hidden">
                 <img 
-                  src={imageName}
+                  src="/new.png"
                   alt="Digital Growth Partner" 
                   className="object-cover w-full h-full"
-                  onError={(e) => {
-                    e.target.src = '/api/placeholder/800/800';
-                  }}
                 />
               </div>
             </div>
