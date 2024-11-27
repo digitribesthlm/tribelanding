@@ -64,12 +64,18 @@ const ContactForm = ({ isOpen, onClose }) => {
         throw new Error('Webhook URL is not configured');
       }
 
-      // Simplified payload structure
+      // Updated payload structure for Airtable
       const payload = {
-        Name: e.target.name.value,
-        Email: e.target.email.value,
-        Message: e.target.message.value,
-        "Submission Date": new Date().toISOString()
+        records: [
+          {
+            fields: {
+              Name: e.target.name.value,
+              Email: e.target.email.value,
+              Message: e.target.message.value,
+              "Submission Date": new Date().toISOString()
+            }
+          }
+        ]
       };
 
       console.log('Sending payload:', payload);
