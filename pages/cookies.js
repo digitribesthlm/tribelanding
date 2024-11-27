@@ -35,7 +35,7 @@ const Cookies = () => {
             <section className="mt-8">
               <h2 className="text-2xl font-semibold mb-4">2. What are cookies</h2>
               <p>
-                Cookies are small pieces of text sent by your web browser by a website you visit. A cookie file is stored in your web browser and allows the Service or a third-party to recognize you and make your next visit easier and the Service more useful to you.
+                Cookies are small pieces of text, sent by your web browser by a website you visit. A cookie file is stored in your web browser and allows the Service or a third-party to recognize you and make your next visit easier and the Service more useful to you.
               </p>
             </section>
 
