@@ -64,7 +64,6 @@ const ContactForm = ({ isOpen, onClose }) => {
         throw new Error('Webhook URL is not configured');
       }
 
-      // Updated payload structure for Airtable
       const payload = {
         records: [
           {
@@ -77,8 +76,6 @@ const ContactForm = ({ isOpen, onClose }) => {
           }
         ]
       };
-
-      console.log('Sending payload:', payload);
 
       const response = await fetch(webhookUrl, {
         method: 'POST',
