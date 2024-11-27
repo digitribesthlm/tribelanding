@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('Request body:', req.body); // Log the request body
     const { name, email, message } = req.body;
     const webhookUrl = process.env.NEXT_PUBLIC_WEBHOOK_URL;
 
@@ -20,6 +21,8 @@ export default async function handler(req, res) {
       }
     };
 
+    console.log('Payload:', payload); // Log the payload
+
     const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
@@ -31,6 +34,8 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const errorText = await response.text();
       console.error('Webhook error:', errorText);
+      console.error('Webhook response status:', response.status);
+      console.error('Webhook response headers:', response.headers);
       throw new Error(`HTTP error! status: ${response.status}, details: ${errorText}`);
     }
 
