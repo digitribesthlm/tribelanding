@@ -64,59 +64,40 @@ const ContactForm = ({ isOpen, onClose }) => {
         throw new Error('Webhook URL is not configured');
       }
 
-      // Format data according to Airtable's webhook requirements
+      // Simplified payload structure
       const payload = {
-        data: {
-          Name: e.target.name.value,
-          Email: e.target.email.value,
-          Message: e.target.message.value,
-          "Submission Date": new Date().toISOString()
-        }
+        Name: e.target.name.value,
+        Email: e.target.email.value,
+        Message: e.target.message.value,
+        "Submission Date": new Date().toISOString()
       };
 
       console.log('Sending payload:', payload);
 
       const response = await fetch(webhookUrl, {
         method: 'POST',
-        mode: 'no-cors', // Add this to handle CORS
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
       });
 
-      // With no-cors mode, we won't get a meaningful response status
-      // So we'll assume success if no error was thrown
+      // With no-cors mode, we won't get a meaningful response
+      // So we assume success if no error was thrown
       setSubmitStatus('success');
       e.target.reset();
-      
       if (typeof window !== 'undefined') {
         localStorage.setItem('lastFormSubmit', Date.now().toString());
       }
-      
       setTimeout(() => {
         onClose();
         setSubmitStatus(null);
       }, 2000);
-
     } catch (error) {
       console.error('Form submission error:', error);
-      let errorMessage = 'Failed to submit form. Please try again.';
-      
-      // Since we're using no-cors mode, we won't get detailed error responses
-      // But we'll keep the error handling structure for future updates
-      if (error.response) {
-        try {
-          const errorData = await error.response.json();
-          errorMessage = errorData.message || errorMessage;
-          console.error('Error response:', errorData);
-        } catch (e) {
-          console.error('Could not parse error response');
-        }
-      }
-      
       setSubmitStatus('error');
-      setErrorDetails(errorMessage);
+      setErrorDetails('Failed to submit form. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
