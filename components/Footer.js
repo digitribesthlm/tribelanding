@@ -2,7 +2,7 @@ import React from 'react';
 
 // Chat configuration
 const CHAT_CONFIG = {
-  enabled: false, // Set to true to enable chat, false to disable
+  enabled: true, // Set to true to enable chat, false to disable
   // The webhook URL is encoded with base64
   encodedUrl: 'aHR0cHM6Ly9uOG4uZGlnaXRyaWJlLnNlL3dlYmhvb2svMmRkY2IzMDctNTlkZS00Y2JjLWExNTUtNGEwMWY0ODhhNzY3L2NoYXQ='
 };
