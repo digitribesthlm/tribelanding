@@ -1,5 +1,11 @@
 import React from 'react';
 
+// Chat configuration
+const CHAT_CONFIG = {
+  enabled: false, // Set to true to enable chat, false to disable
+  webhookUrl: process.env.NEXT_PUBLIC_CHAT_URL
+};
+
 const Footer = () => {
   const brandName = process.env.NEXT_PUBLIC_BRAND_NAME || 'Brand';
 
@@ -33,6 +39,16 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      {CHAT_CONFIG.enabled && (
+        <script type="module" dangerouslySetInnerHTML={{
+          __html: `
+            import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+            createChat({
+              webhookUrl: '${CHAT_CONFIG.webhookUrl}'
+            });
+          `
+        }} />
+      )}
     </footer>
   );
 };
