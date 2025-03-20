@@ -3,7 +3,8 @@ import React from 'react';
 // Chat configuration
 const CHAT_CONFIG = {
   enabled: true, // Set to true to enable chat, false to disable
-  webhookUrl: process.env.NEXT_PUBLIC_CHAT_URL
+  // The webhook URL is encoded with base64
+  encodedUrl: 'aHR0cHM6Ly9uOG4uZGlnaXRyaWJlLnNlL3dlYmhvb2svMmRkY2IzMDctNTlkZS00Y2JjLWExNTUtNGEwMWY0ODhhNzY3L2NoYXQ='
 };
 
 const Footer = () => {
@@ -43,8 +44,21 @@ const Footer = () => {
         <script type="module" dangerouslySetInnerHTML={{
           __html: `
             import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+            
+            // Decode the URL at runtime when the script actually executes
+            const decodedUrl = atob('${CHAT_CONFIG.encodedUrl}');
+            
             createChat({
-              webhookUrl: '${CHAT_CONFIG.webhookUrl}'
+              webhookUrl: decodedUrl,
+              initialMessages: [
+                'Hi there!',
+                'My name is Nathan. How can I assist you today?'
+              ],
+              i18n: {
+                en: {
+                  title: 'Hi there!'
+                }
+              }
             });
           `
         }} />
