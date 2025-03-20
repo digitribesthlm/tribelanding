@@ -2,7 +2,7 @@ import React from 'react';
 
 // Chat configuration
 const CHAT_CONFIG = {
-  enabled: false, // Set to true to enable chat, false to disable
+  enabled: true, // Set to true to enable chat, false to disable
   webhookUrl: process.env.NEXT_PUBLIC_CHAT_URL
 };
 
