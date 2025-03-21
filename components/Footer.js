@@ -51,14 +51,18 @@ const Footer = () => {
             createChat({
               webhookUrl: decodedUrl,
               initialMessages: [
-                'Hi there!',
-                'My name is Samuel. How can I assist you today?'
+                'Hi there! 👋 / Hej där! 👋',
+                'My name is Samuel. I speak both English and Swedish. How can I assist you today? / Jag heter Samuel. Jag pratar både engelska och svenska. Hur kan jag hjälpa dig idag?'
               ],
               i18n: {
                 en: {
-                  title: 'Hi there 77!'
+                  title: 'Chat with Samuel (English/Swedish)'
+                },
+                sv: {
+                  title: 'Chatta med Samuel (Engelska/Svenska)'
                 }
-              }
+              },
+              language: 'auto' // This will attempt to detect the user's language
             });
           `
         }} />
