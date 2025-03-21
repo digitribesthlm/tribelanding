@@ -52,7 +52,7 @@ const Footer = () => {
               webhookUrl: decodedUrl,
               initialMessages: [
                 'Hi there! 👋 / Hej där! 👋',
-                'My name is Samuel. I speak both English and Swedish. How can I assist you today? / Jag heter Samuel. Jag pratar både engelska och svenska. Hur kan jag hjälpa dig idag?'
+                'My name is Samuel. I speak both English and Swedish. How can I assist you today?'
               ],
               i18n: {
                 en: {
