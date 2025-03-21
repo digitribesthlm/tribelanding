@@ -52,11 +52,11 @@ const Footer = () => {
               webhookUrl: decodedUrl,
               initialMessages: [
                 'Hi there!',
-                'My name is Nathan. How can I assist you today?'
+                'My name is Samuel. How can I assist you today?'
               ],
               i18n: {
                 en: {
-                  title: 'Hi there!'
+                  title: 'Hi there 77!'
                 }
               }
             });
