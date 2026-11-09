@@ -13,6 +13,9 @@ const ReactPage = () => {
       <Head>
         <title>React Development | DigiTribe</title>
         <meta name="description" content="Expert React development services for modern web applications" />
+        {CHAT_CONFIG.enabled && (
+          <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+        )}
       </Head>
       <div className="min-h-screen bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

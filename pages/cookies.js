@@ -46,11 +46,11 @@ const Cookies = () => {
               </p>
               <ul className="list-disc pl-6 mt-4">
                 <li>To enable certain functions of the Service</li>
-                <li>To provide analytics</li>
-                <li>To store your preferences</li>
+                <li>To store your preferences, including your cookie choices</li>
+                <li>To provide statistics or marketing, only if you consent</li>
               </ul>
               <p className="mt-4">
-                We use only functional cookies that are required for the operation of our site. We do not use cookies for IP tracking or any other invasive tracking methods.
+                Essential storage required for the operation of our site is always active. Optional statistics and marketing cookies are only set after you give your consent, and you can change or withdraw your choice at any time via &ldquo;Cookie settings&rdquo; in the footer.
               </p>
             </section>
 

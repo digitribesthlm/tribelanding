@@ -1,4 +1,6 @@
 import React from 'react';
+import Head from 'next/head';
+import { useConsent } from './CookieConsent';
 
 // Chat configuration
 const CHAT_CONFIG = {
@@ -9,6 +11,7 @@ const CHAT_CONFIG = {
 
 const Footer = () => {
   const brandName = process.env.NEXT_PUBLIC_BRAND_NAME || 'Brand';
+  const { openSettings } = useConsent();
 
   return (
     <footer className="bg-gray-50 border-t">
@@ -35,11 +38,37 @@ const Footer = () => {
             </a>
           </div>
 
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            <a href="/integritetspolicy" className="text-gray-600 hover:text-blue-600 text-sm">
+              Integritetspolicy
+            </a>
+            <span className="text-gray-300">|</span>
+            <a href="/villkor" className="text-gray-600 hover:text-blue-600 text-sm">
+              Villkor
+            </a>
+            <span className="text-gray-300">|</span>
+            <a href="/cookiepolicy" className="text-gray-600 hover:text-blue-600 text-sm">
+              Cookiepolicy
+            </a>
+            <span className="text-gray-300">|</span>
+            <button
+              onClick={openSettings}
+              className="text-gray-600 hover:text-blue-600 text-sm"
+            >
+              Cookieinställningar
+            </button>
+          </div>
+
           <div className="text-center text-gray-600 text-sm pt-8 border-t border-gray-200 w-full">
             © {new Date().getFullYear()} {brandName}. All rights reserved.
           </div>
         </div>
       </div>
+      {CHAT_CONFIG.enabled && (
+        <Head>
+          <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+        </Head>
+      )}
       {CHAT_CONFIG.enabled && (
         <script type="module" dangerouslySetInnerHTML={{
           __html: `

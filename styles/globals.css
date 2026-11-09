@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide reCAPTCHA badge */
-.grecaptcha-badge {
-  visibility: hidden !important;
-}
-
 /* Chat toggle button color */
 .chat-window-toggle {
   background-color: #f36b23 !important;

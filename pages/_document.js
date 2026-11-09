@@ -4,7 +4,9 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+        {process.env.GOOGLE_SITE_VERIFICATION && (
+          <meta name="google-site-verification" content={process.env.GOOGLE_SITE_VERIFICATION} />
+        )}
       </Head>
       <body>
         <Main />

@@ -7,6 +7,7 @@ const ChatPage = () => {
       <Head>
         <title>Chat Solutions | DigiTribe</title>
         <meta name="description" content="Discover how chat solutions can transform your customer service and boost engagement." />
+        <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
       </Head>
       <div className="min-h-screen bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
